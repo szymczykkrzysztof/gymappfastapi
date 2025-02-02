@@ -1,6 +1,5 @@
-from contextlib import asynccontextmanager
-
 import logging
+from contextlib import asynccontextmanager
 from urllib.request import Request
 
 from asgi_correlation_id import CorrelationIdMiddleware
