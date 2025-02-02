@@ -1,16 +1,17 @@
-# This is a sample Python script.
+from contextlib import asynccontextmanager
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+from fastapi import FastAPI
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+from gymappapi.database import database
+from gymappapi.routers import membership
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await database.connect()
+    yield
+    await database.disconnect()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+app = FastAPI(lifespan=lifespan)
+app.include_router(membership.router)

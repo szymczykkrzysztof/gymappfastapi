@@ -32,3 +32,6 @@ uvicorn==0.34.0
 uvloop==0.21.0
 watchfiles==1.0.4
 websockets==14.2
+
+SQLAlchemy~=2.0.37
+pydantic-settings~=2.7.1
