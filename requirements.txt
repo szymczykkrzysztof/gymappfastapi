@@ -35,3 +35,4 @@ websockets==14.2
 
 SQLAlchemy~=2.0.37
 pydantic-settings~=2.7.1
+databases~=0.9.0

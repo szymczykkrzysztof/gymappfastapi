@@ -1,11 +1,14 @@
+import databases
 import sqlalchemy
+
+from gymappapi.config import config
 
 metadata = sqlalchemy.MetaData()
 membership_table = sqlalchemy.Table(
     "membership",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("name", sqlalchemy.String),
+    sqlalchemy.Column("name", sqlalchemy.String, unique=True),
     sqlalchemy.Column("valid_until", sqlalchemy.DateTime),
 )
 
