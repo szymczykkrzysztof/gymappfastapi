@@ -25,7 +25,6 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 origins = [
     "http://localhost:5173",
-    "https://gymappfastapi.onrender.com"
 ]
 
 app.add_middleware(
